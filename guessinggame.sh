@@ -1,27 +1,27 @@
 #!/usr/bin/env bash
 
-#Algorithm: first, the number of files in the directory is calculated, second the expected number is chosen. 
-#Then there is an equality comparison. The programm ends when the user guesses the number correctly.
+#Algorithm: first, the number of files in the directory is calculated, then the expected number is entered. 
+#Then there is a comparison. The program ends when the user guesses the number correctly.
 
 num=$(ls | wc -l)
 
-function forecast_file {
+function guess_file {
 	echo "Enter your guess for the number of files in directory:"
-	read forecast
-	while [[ $forecast -ne num ]] 
+	read guess
+	while [[ $guess -ne num ]] 
 	do 
-	if [[ $forecast -gt num ]]
+	if [[ $guess -gt num ]]
 		then
 			echo "Too much, press Enter:"
-			read forecast
-		elif [[ $forecast -lt num ]] 
+			read guess
+		elif [[ $guess -lt num ]] 
 		     then
 			echo "Too less, press Enter:"
-			read forecast
+			read guess
 		fi
 	done
 	}
 	
-	echo "Forecast how many files are in this directory:"
-	forecast_file 
-	echo "Right!"
+	echo "Guess how many files are in the current directory:"
+	guess_file 
+	echo "Guessed!"
